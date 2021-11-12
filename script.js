@@ -1,25 +1,35 @@
-// // Get the modal
-// var modal = document.getElementById('myModal');
+const animItems = document.querySelectorAll('._anim-items');
 
-// // Get the button that opens the modal
-// var btn = document.getElementById("myBtn");
+if (animItems.length > 0) {
+   window.addEventListener('scroll', animOnScroll);
+   function animOnScroll() {
+      for(let index = 0; index < animItems.length; index++) {
+         const animItem = animItems[index];
+         const animItemHeight = animItem.offsetHeight;
+         const animItemOffset = offset(animItem).top;
+         animStart = 4;
 
-// // Get the <span> element that closes the modal
-// var span = document.getElementsByClassName("close")[0];
+         let animItemPoint = window.innerHeight - animItemHeight / animStart;
 
-// // When the user clicks on the button, open the modal
-// btn.onclick = function() {
-//     modal.style.display = "block";
-// }
+         if (animItemHeight - window.innerHeight) {
+            animItemPoint = window.innerHeight - window.innerHeight / animStart;
+         }
 
-// // When the user clicks on <span> (x), close the modal
-// span.onclick = function() {
-//     modal.style.display = "none";
-// }
+         if((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHeight)) {
+            animItem.classList.add('_active');
+         } else {
+            animItem.classList.remove('_active');
+         }
+      }
+   }
 
-// // When the user clicks anywhere outside of the modal, close it
-// window.onclick = function(event) {
-//     if (event.target == modal) {
-//         modal.style.display = "none";
-//     }
-// }
+   function offset(el) {
+      const rect = el.getBoundingClientRect(),
+         scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+         scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+  }
+  setTimeout(() => {
+     animOnScroll();
+  }, 300)
+}

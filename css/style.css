@@ -108,7 +108,17 @@ body {
    font-weight: 700;
    line-height: 89px;
    color: #424242;
+
+   transform: translate(0, -120%);
+   opacity: 0;
+   transition: all 0.8s ease 0s;
 }
+.info__name._active {
+   transform: translate(0px, 0px);
+   opacity: 1;
+}
+
+
 .info__description {
    font-size: 14px;
    font-weight: 400;
@@ -171,17 +181,41 @@ body {
 .experiance {
    margin-bottom: 40px;
 }
-.experiance__inner {
+.experiance__items {
    margin-top: 14px;
    margin-bottom: 30px;
    margin-left: 17px;
 }
-.experiance__item {
+.experiance__items li {
    color: #595959;
    font-size: 14px;
    font-weight: 400;
    line-height: 24px;
+
+   transform: translate(-150%, 0px);
+   transition: all 0.3s ease 0s;
 }
+
+.experiance__items._active li  {
+   transform: translate( 0px, 0px);
+} 
+
+.experiance__items._active li:nth-child(1)  {
+   transition: all 0.8s ease 0s;
+} 
+.experiance__items._active li:nth-child(2)  {
+   transition: all 0.8s ease 0.2s;
+} 
+.experiance__items._active li:nth-child(3)  {
+   transition: all 0.8s ease 0.4s;
+} 
+.experiance__items._active li:nth-child(4)  {
+   transition: all 0.8s ease 0.6s;
+} 
+.experiance__items._active li:nth-child(5)  {
+   transition: all 0.8s ease 0.8s;
+} 
+
 
 /* Education */
 .education {
@@ -204,7 +238,17 @@ body {
    font-size: 14px;
    font-weight: 400;
    line-height: 24px;
+
+   transform: translate(0, 50%);
+   opacity: 0;
+   transition: all 0.8s ease 0s;
 }
+.about__text._active {
+   transform: translate(0px, 0px);
+   opacity: 1;
+   transition: all 0.8s ease 0.2s;
+}
+
 .about__section-title {
    margin-bottom: 10px;
 }
@@ -218,10 +262,9 @@ body {
    width: 370px;
    padding-top: 40px;
    padding-bottom: 40px;
-   box-shadow: 5px 9px 20px rgba(0, 0, 0, 0.15);
 }
 .my-photo {
-   width: 370px;
+   width: 320px;
 }
 
 /* Contacts */
